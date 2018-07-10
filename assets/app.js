@@ -11,6 +11,24 @@ window.onload = ()=>{
           loggedIn.style.display = "none";
       }
   });
+
+  firebase.database().ref('messages')
+    .limitToLast(2)
+    .once('value')
+    .then((messages)=>{
+      console.log("mensajes > " +JSON.stringidy(messages));
+  })
+  .catch(()=>{
+  });
+
+  firebase.database().ref('messages')
+    .limitToLast(1)
+    .on('child_added', (newMessage) => {
+        messageContainer.innerHTML += `
+          <p>Nombre: ${newMessage.val().creatorName}</p>
+          <p>${newMessage.val().text}</p>
+        `;
+    });
 };
 
 function register(){
@@ -63,5 +81,18 @@ function loginFacebook() {
 });
 }
 
-//Firebase Database
-// Humane
+// Firebase Database
+// Usaremos una colección para guardar los mensajes, llaada message
+
+function sendMessage() {
+  const currentUser = firebase.auth().currentUser; 
+  const messageAreaText = messageArea.value;
+// Para obtener una nueva llave en la colección messages
+  const newMessageKey = firebase.database().ref().child('messages').push().key;
+
+  firebase.database().ref(`messages/${newMessageKey}`).set({
+    creator : currentUser.uid,
+    creatorName : currentUser.displayName,
+    text : messageAreaText
+  });
+};
