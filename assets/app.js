@@ -4,11 +4,13 @@ window.onload = ()=>{
           //Si estamos logueados
           loggedOut.style.display = "none";
           loggedIn.style.display = "block";
+          messageSection.style.display = "block";
           console.log("User > "+JSON.stringify(user));
       }else{
           //No estamos logueados
           loggedOut.style.display = "block";
           loggedIn.style.display = "none";
+          messageSection.style.display = "none";
       }
   });
 
@@ -25,8 +27,8 @@ window.onload = ()=>{
     .limitToLast(1)
     .on('child_added', (newMessage) => {
         messageContainer.innerHTML += `
-          <p>Nombre: ${newMessage.val().creatorName}</p>
-          <p>${newMessage.val().text}</p>
+          <p class="messageUser">${newMessage.val().creatorName}</p>
+          <p class="textMessage">Dice: ${newMessage.val().text}</p>
         `;
     });
 };

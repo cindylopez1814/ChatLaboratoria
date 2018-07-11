@@ -1,3 +1,49 @@
+h1{
+  text-align: center;
+}
+.register{
+  padding: 0%;
+}
+.inputRegister{
+  margin-top: 10%;
+}
+#messageSection{
+  padding: 1%;
+  background-color: #8a8787; 
+}
+.messageUser{
+  color: turquoise;
+}
+.textMessage{
+  color: azure;
+}
 #messageContainer{
-  height: 70vh;
+  padding: 2%;
+  height: 40vh;
+  border: 1px whitesmoke solid;
+  padding: 1%;
+  margin-bottom: 0%
+}
+.send{
+  margin: 0%;
+}
+.textarea{
+  border: 3px whitesmoke solid;;
+  background-color: #8a8787;
+  color: white;
+  margin-bottom: 0%
+}
+#loginContainer{
+  margin-bottom: 0%;
+}
+body{
+  background-color: #333333;
+  height: 100vh;
+}
+#login{
+  width: 49%;
+  margin-left: 0.2%
+}
+#register{
+  width: 49%;
 }
